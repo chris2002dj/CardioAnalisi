@@ -56,5 +56,23 @@ namespace CardioanalisiLibrary
 
             return messaggio; // Restituisco il valore
         }
+
+        /*Calcolo Uomo (ES 3)*/
+        public static double calcolo_uomo(double a, double p, double f, double t)
+        {
+            double calorie_uomoni = (a * 0.2017) + (p * 0.199) + (f * 0.6309) - (55.0969 * t / 4.184); // Calcolo i valori
+
+            return calorie_uomoni;
+        }
+
+        /*Calcolo Donna (ES 3)*/
+        public static double calcolo_donna(double a, double p, double f, double t)
+        {
+            double calorie_donne = (a * 0.074) - (p * 0.126) + (f * 0.4472) - (20.4022 * t / 4.184); // Calcolo i valori
+
+            return calorie_donne;
+
+        }
+
     }
 }

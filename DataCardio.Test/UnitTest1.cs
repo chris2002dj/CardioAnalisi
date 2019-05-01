@@ -32,5 +32,24 @@ namespace DataCardio.Test
 
             Assert.AreEqual(controllo, variabile_02); // Confronto i due valori
         }
+
+        // ES 3
+        [DataTestMethod]
+        [DataRow(50, 80, 20, 20)]
+        public void TestMethod_03(double a, double p, double f, double t)
+        {
+            double calcolo = CardioanalisiLibrary.DataCardio.calcolo_uomo(a, p, f, t); // Chiamo il metodo per calcolare
+        }
+
+        // ES 3
+        [DataTestMethod]
+        [DataRow(50, 80, 20, 10)]
+        public void TestMethod_04(double a, double p, double f, double t)
+        {
+            double calcolo = CardioanalisiLibrary.DataCardio.calcolo_donna(a, p, f, t); // Chiamo il metodo per calcolare
+        }
+
+
+
     }
 }
