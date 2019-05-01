@@ -65,7 +65,14 @@ namespace DataCardio.Test
             double camminata = CardioanalisiLibrary.DataCardio.camminata(km, peso);
         }
 
-       
+        // ES 5.B
+        [DataTestMethod]
+        [DataRow(15)]
+        public void TestMethod_08(double battito)
+        {
+            double riposo = CardioanalisiLibrary.DataCardio.riposo(battito);
+        }
+
 
     }
 }

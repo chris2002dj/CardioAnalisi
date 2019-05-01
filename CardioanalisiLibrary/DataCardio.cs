@@ -86,5 +86,14 @@ namespace CardioanalisiLibrary
 
             return spesa_energetica;
         }
+
+        /*Battito a riposo (ES 5.B)*/
+        public static double riposo(double riposo)
+        {
+            double calcolo = riposo * 14;
+
+            return calcolo;
+        }
     }
 }
+
