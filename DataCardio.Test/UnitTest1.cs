@@ -49,7 +49,23 @@ namespace DataCardio.Test
             double calcolo = CardioanalisiLibrary.DataCardio.calcolo_donna(a, p, f, t); // Chiamo il metodo per calcolare
         }
 
+        // ES 4
+        [DataTestMethod]
+        [DataRow(10, 80)]
+        public void TestMethod_05(double km, double peso)
+        {
+            double corsa = CardioanalisiLibrary.DataCardio.corsa(km, peso);
+        }
 
+        // ES 4
+        [DataTestMethod]
+        [DataRow(10, 50)]
+        public void TestMethod_06(double km, double peso)
+        {
+            double camminata = CardioanalisiLibrary.DataCardio.camminata(km, peso);
+        }
+
+       
 
     }
 }

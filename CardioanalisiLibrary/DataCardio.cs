@@ -52,8 +52,6 @@ namespace CardioanalisiLibrary
             {
                 messaggio = "Tachicardia";
             }
-
-
             return messaggio; // Restituisco il valore
         }
 
@@ -71,8 +69,22 @@ namespace CardioanalisiLibrary
             double calorie_donne = (a * 0.074) - (p * 0.126) + (f * 0.4472) - (20.4022 * t / 4.184); // Calcolo i valori
 
             return calorie_donne;
-
         }
 
+        /*Calcolo Corsa (ES 4)*/
+        public static double corsa(double km, double peso)
+        {
+            double spesa_energetica = 0.9 * km * peso;
+
+            return spesa_energetica;
+        }
+
+        /*Calcolo Camminata (ES 4)*/
+        public static double camminata(double km, double peso)
+        {
+            double spesa_energetica = 0.5 * km * peso;
+
+            return spesa_energetica;
+        }
     }
 }
