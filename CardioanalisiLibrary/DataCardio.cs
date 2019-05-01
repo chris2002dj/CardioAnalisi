@@ -31,5 +31,30 @@ namespace CardioanalisiLibrary
 
             return frequenza_max;
         }
+
+        /*Controllo frequenza (ES 2)*/
+        public static string controllo_frequenza(int variabile)
+        {
+            string messaggio = "";
+
+            // Controlli
+            if (variabile < 60)
+            {
+                messaggio = "Bradicardia";
+            }
+
+            if (variabile > 60 && variabile < 100)
+            {
+                messaggio = "Normale";
+            }
+
+            if (variabile > 100)
+            {
+                messaggio = "Tachicardia";
+            }
+
+
+            return messaggio; // Restituisco il valore
+        }
     }
 }

@@ -6,6 +6,7 @@ namespace DataCardio.Test
     [TestClass]
     public class UnitTest1
     {
+        // ES 1
         [TestMethod]
         public void TestMethod_01()
         {
@@ -18,6 +19,18 @@ namespace DataCardio.Test
             int controllo_cardiaco_min = CardioanalisiLibrary.DataCardio.controllo_battito_min(cardiaco_max); //Chiamo il metodo per controllare il battito min
 
             int controllo_cardiaco_max = CardioanalisiLibrary.DataCardio.controllo_battito_min(cardiaco_max); //Chiamo il metodo per controllare il battito max
+        }
+
+        // ES 2
+        [DataTestMethod]
+        [DataRow(50, "Bradicardia")]
+        [DataRow(80, "Normale")]
+        [DataRow(120, "Tachicardia")]
+        public void TestMethod_02(int variabile_01, string variabile_02)
+        {
+            string controllo = CardioanalisiLibrary.DataCardio.controllo_frequenza(variabile_01); // Chiamo il metodo
+
+            Assert.AreEqual(controllo, variabile_02); // Confronto i due valori
         }
     }
 }
