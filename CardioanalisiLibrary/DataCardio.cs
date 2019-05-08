@@ -33,40 +33,48 @@ namespace CardioanalisiLibrary
         }
 
         /*Controllo frequenza (ES 2)*/
-        public static string controllo_frequenza(int variabile)
+        public static string controllo_frequenza(int battito)
         {
             string messaggio = "";
 
             // Controlli
-            if (variabile < 60)
+            if (battito > 0)
             {
-                messaggio = "Bradicardia";
-            }
+                if (battito < 60)
+                {
+                    messaggio = "Bradicardia";
+                }
 
-            if (variabile > 60 && variabile < 100)
-            {
-                messaggio = "Normale";
-            }
+                if (battito > 60 && battito < 100)
+                {
+                    messaggio = "Normale";
+                }
 
-            if (variabile > 100)
-            {
-                messaggio = "Tachicardia";
+                if (battito > 100)
+                {
+                    messaggio = "Tachicardia";
+                }
             }
+            else
+            {
+                messaggio="errore! hai inserito male i dati";
+            }
+            
             return messaggio; // Restituisco il valore
         }
 
         /*Calcolo Uomo (ES 3)*/
-        public static double calcolo_uomo(double a, double p, double f, double t)
+        public static double calcolo_uomo(double eta, double peso, double frequenza, double durata)
         {
-            double calorie_uomoni = (a * 0.2017) + (p * 0.199) + (f * 0.6309) - (55.0969 * t / 4.184); // Calcolo i valori
+            double calorie_uomoni = (eta * 0.2017) + (peso * 0.199) + (frequenza * 0.6309) - (55.0969 * durata / 4.184); // Calcolo i valori
 
             return calorie_uomoni;
         }
 
         /*Calcolo Donna (ES 3)*/
-        public static double calcolo_donna(double a, double p, double f, double t)
+        public static double calcolo_donna(double eta, double peso, double frequenza, double durata)
         {
-            double calorie_donne = (a * 0.074) - (p * 0.126) + (f * 0.4472) - (20.4022 * t / 4.184); // Calcolo i valori
+            double calorie_donne = (eta * 0.074) - (peso * 0.126) + (frequenza * 0.4472) - (20.4022 * durata / 4.184); // Calcolo i valori
 
             return calorie_donne;
         }
