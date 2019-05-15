@@ -9,9 +9,14 @@ namespace CardioanalisiLibrary
     public class DataCardio
     {
         /*Controllo il cardiaco max dell'utente* (ES 1)*/
-        public static int cardiaco_max(int x, int y)
+        public static int cardiaco_max(int eta, int battito_minuto)
         {
-            int max = 220 - x; //Trovo la frequenza cardiaca massima dell'utente
+            int max = 0;
+
+            if (eta > 0 && battito_minuto > 0)
+            {
+                max = 220 - eta; //Trovo la frequenza cardiaca massima dell'utente
+            }
 
             return max;
         }
@@ -95,12 +100,145 @@ namespace CardioanalisiLibrary
             return spesa_energetica;
         }
 
-        /*Battito a riposo (ES 5.B)*/
+        /*Battito a riposo (ES 5.B)*/       
         public static double riposo(double riposo)
         {
-            double calcolo = riposo * 14;
+            double calcolo;
+
+            if (riposo > 0) // Controllo se è maggiore di 0
+            {
+                calcolo = riposo * 14;
+            }
+            else
+            {
+                calcolo = 0;
+            }
+
 
             return calcolo;
+        }
+
+        // Controllo peso (ES 6)
+        public static string controllo_peso(double eta, double peso)
+        {
+            string messaggio = "";
+            
+            if (eta > 0 && peso > 0) // Controllo se i dati sono maggiori di 0
+            {
+                if (eta >= 18 || eta <= 30) // Controllo l'eta
+                {
+                    //Controllo il peso
+                    if (peso <= 26)
+                    {
+
+                        messaggio = "Sottopeso";
+                    }
+
+                    if (peso >= 27 || peso <= 55)
+                    {
+
+                        messaggio = "Normopeso";
+                    }
+
+                    if (peso >= 56 || peso <= 70)
+                    {
+
+                        messaggio = "Sovrapeso";
+                    }
+                }
+
+                if (eta >= 31 || eta <= 40)
+                {
+                    if (peso <= 28)
+                    {
+
+                        messaggio = "Sottopeso";
+                    }
+
+                    else if (peso >= 29 || peso <= 65)
+                    {
+
+                        messaggio = "Normopeso";
+                    }
+
+                    else if (peso >= 66 || peso <= 80)
+                    {
+
+                        messaggio = "Sovrapeso";
+                    }
+
+                }
+
+                if (eta >= 41 || eta <= 50)
+                {
+                    if (peso <= 30)
+                    {
+
+                        messaggio = "Sottopeso";
+                    }
+
+                    if (peso >= 31 || peso <= 75)
+                    {
+
+                        messaggio = "Normopeso";
+                    }
+
+                    if (peso >= 76 || peso <= 90)
+                    {
+
+                        messaggio = "Sovrapeso";
+                    }
+
+                }
+
+                if (eta >= 51 || eta <= 60)
+                {
+                    if (peso <= 32)
+                    {
+                        messaggio = "Sottopeso";
+                    }
+
+                    if (peso >= 33 || peso <= 85)
+                    {
+                        messaggio = "Normopeso";
+                    }
+
+                    if (peso >= 86 || peso <= 100)
+                    {
+                        messaggio = "Sovrapeso";
+                    }
+
+                }
+
+                if (eta >= 61)
+                {
+                    if (peso <= 34)
+                    {
+
+                        messaggio = "Sottopeso";
+                    }
+
+                    if (peso >= 35 || peso <= 95)
+                    {
+
+                        messaggio = "Normopeso";
+                    }
+
+                    if (peso >= 96 || peso <= 110)
+                    {
+
+                        messaggio = "Sovrapeso";
+                    }
+
+                }
+
+            }
+            else
+            {
+                messaggio = "errore inserimento dati";
+            }
+
+            return messaggio;
         }
     }
 }

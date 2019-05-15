@@ -8,13 +8,10 @@ namespace DataCardio.Test
     {
         // ES 1
         [TestMethod]
-        public void TestMethod_01()
+        [DataRow(20,60)]
+        public void TestMethod_01(int eta, int battito_minuto)
         {
-            int x = 20; //Età dell'utente
-
-            int y = 60; //Battito cardiaco al minuto
-
-            int cardiaco_max = CardioanalisiLibrary.DataCardio.cardiaco_max(x, y); //Chiamo il metodo per controllare la frequenza cardiaca massima
+            int cardiaco_max = CardioanalisiLibrary.DataCardio.cardiaco_max(eta, battito_minuto); //Chiamo il metodo per controllare la frequenza cardiaca massima
 
             int controllo_cardiaco_min = CardioanalisiLibrary.DataCardio.controllo_battito_min(cardiaco_max); //Chiamo il metodo per controllare il battito min
 
@@ -26,11 +23,11 @@ namespace DataCardio.Test
         [DataRow(50, "Bradicardia")]
         [DataRow(80, "Normale")]
         [DataRow(120, "Tachicardia")]
-        public void TestMethod_02(int variabile_01, string variabile_02)
+        public void TestMethod_02(int battito, string tipo_battito)
         {
-            string controllo = CardioanalisiLibrary.DataCardio.controllo_frequenza(variabile_01); // Chiamo il metodo
+            string controllo = CardioanalisiLibrary.DataCardio.controllo_frequenza(battito); // Chiamo il metodo
 
-            Assert.AreEqual(controllo, variabile_02); // Confronto i due valori
+            Assert.AreEqual(controllo, tipo_battito); // Confronto i due valori
         }
 
         // ES 3 
@@ -39,6 +36,7 @@ namespace DataCardio.Test
         public void TestMethod_03(double eta, double peso, double frequenza, double durata)
         {
             double calcolo = CardioanalisiLibrary.DataCardio.calcolo_uomo(eta, peso, frequenza, durata); // Chiamo il metodo per calcolare
+            
         }
 
         // ES 3
@@ -67,10 +65,25 @@ namespace DataCardio.Test
 
         // ES 5.B
         [DataTestMethod]
-        [DataRow(15)]
-        public void TestMethod_08(double battito)
+        [DataRow(15,210)]
+        [DataRow(0,0)]
+        public void TestMethod_08(double battito, double risultato, double messaggio)
         {
-            double riposo = CardioanalisiLibrary.DataCardio.riposo(battito);
+            double risultato_finale = CardioanalisiLibrary.DataCardio.riposo(battito);
+
+            Assert.AreEqual(risultato_finale, risultato);
+        }
+
+        // ES 6
+        [DataTestMethod]
+        [DataRow(61, 25, "Sottopeso")]
+        [DataRow(32, 70, "Normopeso")]
+        [DataRow(52, 33, "Normopeso")]
+        public void TestMethod_ControlloPeso(double eta, double peso, string risultato)
+        {
+            string risultato_finale = CardioanalisiLibrary.DataCardio.controllo_peso(eta, peso);
+
+            Assert.AreEqual(risultato_finale, risultato);
         }
 
 
